@@ -1,0 +1,87 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<script>
+
+
+    function DOSuccess() {
+        fetch('/api/values')
+            .then(response => response.json())
+            .then(data => console.log(data));
+    }
+
+    function DOFail() {
+        fetch('/api/values/raiseError')
+            .then(response => response.json())
+            .then(data => console.log(data));
+    }
+    
+
+
+</script>
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#">Home</a></li>
+        <li class="breadcrumb-item"><a href="#">Library</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Data</li>
+    </ol>
+</nav>
+
+<div class="jumbotron">
+    <h1 class="display-4">SRE principles</h1>
+    <p class="lead">This is a sample application that doesn't do much. It can generate telemetries to demonstrate some SRE principles.</p>
+    <div class="row">
+        <div class="column">
+            <button onclick="DOSuccess();" type="button" class="btn btn-primary">Primary</button>
+            <button onclick="DOFail()" type="button" class="btn btn-danger">Danger</button>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+<div class="row">
+    <div class="column">
+        <div class="card" style="        width: 18rem;
+        margin: 10px 10px 10px 10px;
+">
+            <img class="card-img-top" src="https://www.autocar.co.uk/sites/autocar.co.uk/files/styles/body-image/public/1-corvette-stingray-c8-2019-fd-hr-hero-front_0.jpg?itok=SEYe_vLy" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+    </div>
+    <div class="column">
+        <div class="card" style="        width: 18rem;
+        margin: 10px 10px 10px 10px;
+">
+            <img class="card-img-top" src="https://www.autocar.co.uk/sites/autocar.co.uk/files/styles/body-image/public/1-corvette-stingray-c8-2019-fd-hr-hero-front_0.jpg?itok=SEYe_vLy" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+    </div>
+    <div class="column">
+        <div class="card" style="        width: 18rem;
+        margin: 10px 10px 10px 10px;
+">
+            <img class="card-img-top" src="https://www.autocar.co.uk/sites/autocar.co.uk/files/styles/body-image/public/1-corvette-stingray-c8-2019-fd-hr-hero-front_0.jpg?itok=SEYe_vLy" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+    </div>
+</div>
