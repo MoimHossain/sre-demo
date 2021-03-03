@@ -1,0 +1,34 @@
+﻿@page
+@model ReliableApp.Pages.ErrorBudgetModel
+@{
+    Layout = "_WidgetLayout";
+    ViewData["Title"] = "Error Budget";
+
+    var ts = string.Empty;
+    if(Request.Query.ContainsKey("ts"))
+    {
+        ts = Request.Query["ts"].ToString();
+    }
+
+    var data = await AppInsightsDataCollector.GetErrorBudgetAsync(ts);
+    var errorBudget = data.GetErrorBudget();
+    var bo = data.GetBurnedOut();
+    var rawValue = data.GetValue();
+}
+
+<p></p>
+
+
+<div class="jumbotron">
+    <h1 class="display-4">@errorBudget% (approx)</h1>
+    <p class="lead">Error Budget show for timespan @ts (sliding window)</p>
+
+</div>
+<p>
+
+    <div class="progress" style="height: 40px;">
+        <div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" role="progressbar" style="width: @bo%" aria-valuenow="@bo" aria-valuemin="0" aria-valuemax="100">@bo% Burn out</div>
+        <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" role="progressbar" style="width: @errorBudget%" aria-valuenow="@errorBudget" aria-valuemin="0" aria-valuemax="100">@errorBudget% Remaining</div>        
+    </div>
+
+</p>
